@@ -1,0 +1,7 @@
+/files
+/lifepo4wered/
+/*.substvars
+/*.log
+/*-stamp
+/*-debhelper
+/*.debhelper
