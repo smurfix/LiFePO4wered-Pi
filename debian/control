@@ -11,7 +11,6 @@ Package: lifepo4wered
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Tools for the LiFePO4wered/Pi+ and legacy modules
-
  This package contains an access library, command line tool, and daemon for
  the LiFePO4wered/Pi+ and legacy LiFePO4wered/Pi and LiFePO4wered/Pi3
  modules.
