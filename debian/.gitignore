@@ -5,3 +5,5 @@
 /*-stamp
 /*-debhelper
 /*.debhelper
+/*.init
+/*.service
