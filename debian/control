@@ -1,15 +1,20 @@
-Source: li-fe-powered
-Section: unknown
+Source: lifepo4wered
+Section: main
 Priority: optional
-Maintainer: unknown <matthias@urlichs.de>
+Maintainer: Matthias Urlichs <matthias@urlichs.de>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.8
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Git: https://anonscm.debian.org/collab-maint/li-fe-powered.git
-#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/li-fe-powered.git
+Homepage: https://github.com/xorbit/LiFePO4wered-Pi
+Vcs-Git: https://github.com/xorbit/LiFePO4wered-Pi.git
 
-Package: li-fe-powered
+Package: lifepo4wered
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Tools for the LiFePO4wered/Pi+ and legacy modules
+
+ This package contains an access library, command line tool, and daemon for
+ the LiFePO4wered/Pi+ and legacy LiFePO4wered/Pi and LiFePO4wered/Pi3
+ modules.
+ .
+ These modules act as an uninterruptible power supply for Raspberry Pi.
+
