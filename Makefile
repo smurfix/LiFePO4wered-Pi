@@ -10,8 +10,15 @@ help:
 all:
 	python3 build.py
 
+	test -d debian && \
+	sed "s:DAEMON_DIRECTORY:${PREFIX}/sbin:" < initscript > debian/lifepo4wered.init
+
+	test -d debian && \
+	sed "s:DAEMON_DIRECTORY:${PREFIX}/sbin:" < systemdscript > debian/lifepo4wered.service
+inst:
+	env PREFIX=${PREFIX} bash INSTALL.sh
 install:
-	env PREFIX=${PREFIX} NO_SYSTEM_INSTALL=nope bash INSTALL.sh
+	env PREFIX=${DESTDIR}/usr NO_SYSTEM_INSTALL=nope bash INSTALL.sh
 clean:
 	rm -rf build
 	-rm -f debian/lifepo4wered.init
