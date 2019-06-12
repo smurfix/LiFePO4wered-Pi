@@ -1,3 +1,9 @@
+lifepo4wered (0.2-4) unstable; urgency=medium
+
+  * More decrufting
+
+ -- unknown <matthias@urlichs.de>  Mon, 10 Jun 2019 16:47:26 +0200
+
 lifepo4wered (0.2-3) unstable; urgency=medium
 
   * More packaging fixing

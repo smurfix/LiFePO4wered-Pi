@@ -1,0 +1,56 @@
+#!/bin/sh
+# postinst script for li-fe-powered
+#
+# see: dh_installdeb(1)
+
+set -e
+
+case "$1" in
+    configure)
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        exit 0
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+RUN=y
+if ! grep -q ^dtparam=i2c_arm=on /boot/config.txt
+then
+  echo "" >> /boot/config.txt
+  echo "# I2C device tree settings" >> /boot/config.txt
+  echo "dtparam=i2c1=on" >> /boot/config.txt
+  echo "dtparam=i2c_arm=on" >> /boot/config.txt
+  echo "Enabling I2C in device tree configuration"
+  echo "You need to reboot for this to take effect!"
+  RUN=n
+fi
+
+# Check whether I2C device module is loaded
+if ! grep -q i2c-dev /etc/modules
+then
+  echo "" >> /etc/modules
+  echo "# Load I2C device module" >> /etc/modules
+  echo "i2c-dev" >> /etc/modules
+  test "$RUN" = "y" && /sbin/modprobe i2c-dev
+fi
+
+# Check whether the UART is enabled in the device tree
+# We need the UART to detect when the Pi shut down
+if ! grep -q ^enable_uart=1 /boot/config.txt
+then
+  echo "" >> /boot/config.txt
+  echo "# UART device tree settings" >> /boot/config.txt
+  echo "enable_uart=1" >> /boot/config.txt
+  echo "Enabling UART in device tree configuration"
+  echo "You need to reboot for this to take effect!"
+fi
+
+exit 0
